@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cp-test-app-frontend
+  namespace: cp-test-app
+  labels:
+    app: cp-test
+spec:
+  selector:
+    app: cp-test  # Matches Pods with the same label
+  type: ClusterIP  # Options: ClusterIP, NodePort, LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80  # Service Port
+      targetPort: 80  # Container Port
+
