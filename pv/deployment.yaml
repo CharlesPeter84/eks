@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cp-test-app-frontend
+  namespace: cp-test-app
+  labels:
+    app: cp-test
+spec:
+  replicas: 1  # Specifies the number of replicas
+  selector:
+    matchLabels:
+      app: cp-test
+  template:
+    metadata:
+      labels:
+        app: cp-test
+    spec:
+      containers:
+        - name: cp-test-frontend
+          image: nginx:latest  # Uses the latest Nginx image
+          ports:
+            - containerPort: 80  # Exposes port 80 for HTTP traffic
+          volumeMounts:
+            - name: local-volume
+              mountPath: /usr/share/nginx/html  # Path inside the container where the volume will be mounted
+      volumes:
+        - name: local-volume
+          emptyDir: {}
