@@ -1,0 +1,25 @@
+---
+# This is "dependant on an EFS filesystem" having been created so do that first
+#   *however* make sure it's not already been done:
+#    - aws efs describe-file-systems
+#    - kubectl get storageclasses.storage.k8s.io  efs-sc
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  annotations: {}
+  name: efs-sc
+parameters:
+  basePath: "/dynamic_provisioning"  # Something "explanatory" but optional
+  directoryPerms: "700"  # Probably need to think about this if wider open
+  ensureUniqueDirectory: "true"  # optional
+  fileSystemId: "fs-0624d787773904dd6"  # filesystem ID of the filesystem for EKS
+  # above from `aws efs describe-file-systems \
+  #  | jq '.FileSystems[] | {"Name":.Name,"FileSystemId":.FileSystemId}'`
+  #  `export EFSFSID=$(aws efs describe-file-systems | jq -rc '.FileSystems[].FileSystemId')`
+  #  apply with `envsubst < efs-storageclass.yaml | kubectl apply -f -`
+  provisioningMode: efs-ap
+  reuseAccessPoint: "false"  # optional
+  subPathPattern: "${.PVC.namespace}/${.PVC.name}"  # optional
+  # gidRangeStart: "1000"  # optional
+  # gidRangeEnd: "2000"  # optional
+provisioner: efs.csi.aws.com

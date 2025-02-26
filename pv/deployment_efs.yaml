@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cpapp-efs
+  namespace: cp-test-app
+  labels:
+    app: cpapp-efs
+spec:
+  replicas: 3  # Specifies the number of replicas
+  selector:
+    matchLabels:
+      app: cpapp-efs
+  template:
+    metadata:
+      labels:
+        app: cpapp-efs
+    spec:
+      containers:
+        - name: cpapp-efs
+          image: nginx:latest  # Uses the latest Nginx image
+          ports:
+            - containerPort: 80  # Exposes port 80 for HTTP traffic
+          volumeMounts:
+            - name: cpapp-webroot
+              mountPath: /usr/share/nginx/html  # Path inside the container where the volume will be mounted
+      volumes:
+        - name: cpapp-webroot
+          persistentVolumeClaim:
+            claimName: cpapp-efs-pvc
