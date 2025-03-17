@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: cp-test-app
+  name: cptest
   labels:
     environment: testing
     owner: cpj
