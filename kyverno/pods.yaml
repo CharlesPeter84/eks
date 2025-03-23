@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-pod
+  namespace: cptest
+  labels:
+    app: ubuntu
+spec:
+  containers:
+    - name: ubuntu
+      image: ubuntu:22.04
+      command: ["sleep", "infinity"]  # Keeps the container running
