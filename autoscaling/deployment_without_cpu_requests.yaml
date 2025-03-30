@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: asgtest2
+  namespace: cptest
+spec:
+  replicas: 10  # Set a high number of replicas to trigger scaling
+  selector:
+    matchLabels:
+      app: asgtest2
+  template:
+    metadata:
+      labels:
+        app: asgtest2
+    spec:
+      containers:
+        - name: busybox
+          image: busybox
+          command: ["sh", "-c", "while true; do echo running; sleep 10; done"]
+
