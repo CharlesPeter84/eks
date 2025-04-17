@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cptest-app
+  namespace: cptest
+  labels:
+    app: cptest-app
+spec:
+  replicas: 2  # Specifies the number of replicas
+  selector:
+    matchLabels:
+      app: cptest-app
+  template:
+    metadata:
+      labels:
+        app: cptest-app
+    spec:
+      containers:
+        - name: cptest-app
+          image: nginx:latest  # Uses the latest Nginx image
+          ports:
+            - containerPort: 80  # Exposes port 80 for HTTP traffic
+          resources:
+            limits:
+              cpu: 250m
+
