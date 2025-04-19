@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cptest-app
+  namespace: cptest-fargate
+  labels:
+    app: cptest-app
+spec:
+  replicas: 4 #Specifies the number of replicas
+  selector:
+    matchLabels:
+      app: cptest-app
+  template:
+    metadata:
+      labels:
+        app: cptest-app
+        fargate: "yes"
+    spec:
+      containers:
+        - name: cptest-app
+          image: nginx:latest  # Uses the latest Nginx image
+          ports:
+            - containerPort: 80  # Exposes port 80 for HTTP traffic
+          resources:
+            limits:
+              cpu: 1
+              memory: 2.5G
+
