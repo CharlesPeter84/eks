@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cptest2-dep2-app2
+  namespace: cptest2
+  labels:
+    app: cptest2-dep2-app2
+spec:
+  replicas: 1  # Specifies the number of replicas
+  selector:
+    matchLabels:
+      app: cptest2-dep2-app2
+  template:
+    metadata:
+      labels:
+        app: cptest2-dep2-app2
+    spec:
+      containers:
+        - name: frontend
+          image: nginx:latest  # Uses the latest Nginx image
+          ports:
+            - containerPort: 80  # Exposes port 80 for HTTP traffic
+

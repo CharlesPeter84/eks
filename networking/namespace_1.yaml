@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cptest1
+  labels:
+    environment: testing
+    owner: cpj
+  annotations:
+    description: "CP Test Application"
+    contact: "charlesjpeter@gmail.com"
+
