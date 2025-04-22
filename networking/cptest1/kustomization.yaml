@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: cptest1
+resources:
+  - namespace_1.yaml
+  - dep1_app2.yaml
+  - dep1_app1.yaml
+  - svc1_app2.yaml
+  - svc1_app1.yaml
+ 
