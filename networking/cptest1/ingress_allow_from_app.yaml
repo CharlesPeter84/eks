@@ -9,6 +9,9 @@ spec:
       app: cptest1-dep1-app1
   ingress:
   - from:
+      - namespaceSelector:
+          matchLabels:
+            name: cptest2
       - podSelector:
           matchLabels:
             app: cptest2-dep2-app2
