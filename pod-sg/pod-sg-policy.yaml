@@ -1,0 +1,12 @@
+apiVersion: vpcresources.k8s.aws/v1beta1
+kind: SecurityGroupPolicy
+metadata:
+  name: ext-app-sg
+  namespace: cptest1
+spec:
+  podSelector:
+    matchLabels:
+      app: cptest1-dep1-app1 
+  securityGroups:
+    groupIds:
+      - sg-0f5e4362b862144ee

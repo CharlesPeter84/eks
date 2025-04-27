@@ -1,0 +1,27 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: ingress-allow-ns
+  namespace: cptest2
+spec:
+  podSelector:
+    matchLabels: {}
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+  - from:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: cptest2
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: cptest1
+  egress:
+  - to:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: cptest2
+      - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
