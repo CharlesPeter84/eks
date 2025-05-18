@@ -6,7 +6,7 @@ metadata:
   labels:
     app: cptest1-dep1-app1
 spec:
-  replicas: 1  # Specifies the number of replicas
+  replicas: 22 # Specifies the number of replicas
   selector:
     matchLabels:
       app: cptest1-dep1-app1
