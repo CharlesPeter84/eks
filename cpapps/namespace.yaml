@@ -4,7 +4,7 @@ metadata:
   name: cpapps
   labels:
     environment: development
-    owner: Charles Peter Joseph
+    owner: "Charles Peter Joseph"
   annotations:
     description: "CP Apps Development"
     contact: "charlesjpeter@gmail.com"
