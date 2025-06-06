@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cpapp1A
+  namespace: cpapp1
+  labels:
+    app: cpapp1A
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cpapp1A
+  template:
+    metadata:
+      labels:
+        app: cpapp1A
+    spec:
+      containers:
+        - name: frontend
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+
