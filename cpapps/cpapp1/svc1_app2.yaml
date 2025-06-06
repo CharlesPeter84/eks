@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: svc1B
+  name: svc1b
   namespace: cpapp1
   labels:
-    app: svc1B
+    app: svc1b
 spec:
   selector:
-    app: cpapp1B
+    app: cpapp1b
   type: ClusterIP
   ports:
     - protocol: TCP

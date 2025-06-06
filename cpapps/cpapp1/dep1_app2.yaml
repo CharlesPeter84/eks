@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cpapp1B
+  name: cpapp1b
   namespace: cpapp1
   labels:
-    app: cpapp1B
+    app: cpapp1b
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cpapp1B
+      app: cpapp1b
   template:
     metadata:
       labels:
-        app: cpapp1B
+        app: cpapp1b
     spec:
       containers:
         - name: frontend
